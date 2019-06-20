@@ -51,13 +51,13 @@ def SplitData(data):
         arr_str = a.split(param_delimeter)
 
         params = []
-        arr_par = arr_str[1 : -2]
+        arr_par = arr_str[1: -2]
 
         for p in arr_par:
-            num = p[1 : p.find(':')]
-            t = p[p.find(type_delimeter) + len(type_delimeter) : -1]
+            num = p[1: p.find(':')]
+            t = p[p.find(type_delimeter) + len(type_delimeter): -1]
 
-            data = p[p.find("'") + 1 : p.rfind("'")]
+            data = p[p.find("'") + 1: p.rfind("'")]
 
             params.append({
                 'num': num,
@@ -65,16 +65,16 @@ def SplitData(data):
                 'type': t
             })
 
-        result.append({ 'sql':  arr_str[0], 'params': params })
+        result.append({'sql':  arr_str[0], 'params': params})
 
     return result
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2:
-        sql_path = input("input file path: ")
-    else:
+    if len(sys.argv) >= 2:
         sql_path = sys.argv[1]
+    else:
+        sql_path = input("input file path: ")
 
     if len(sys.argv) == 3:
         res_path = sys.argv[2]
